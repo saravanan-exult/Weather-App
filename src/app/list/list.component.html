@@ -1,0 +1,6 @@
+<mat-action-list>
+    <button *ngFor="let city of cityList" mat-list-item (click)="showInfo(city.name)"> 
+            <mat-icon>directions</mat-icon> {{ city.name }}
+    </button>
+
+</mat-action-list>

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Weather in {{data.selectedCity}}, {{data.weatherData.sys.country}}</h1>
+<div mat-dialog-content>
+    <h3 class="weather-widget__temperature">
+        <img class="weather-widget__img" src="https://openweathermap.org/img/wn/{{data.weatherData.weather[0].icon}}@2x.png" width="50" height="50">
+        <span class="weather-widget__temperature__text">{{data.weatherData.main.temp | temperatureConverter: 'C'}}</span>
+        <small class="weather-widget__date">on {{today | date:'short'}}</small>
+    </h3>
+
+    <mat-chip-list aria-label="Weather Details">
+        <mat-chip color="primary" selected *ngFor="let w of data.weatherData.weather">{{w.main}}</mat-chip>
+        <mat-chip color="accent" selected>Min - {{data.weatherData.main.temp_min | temperatureConverter: 'C'}}</mat-chip>
+        <mat-chip color="accent" selected>Max - {{data.weatherData.main.temp_max | temperatureConverter: 'C'}}</mat-chip>
+        <mat-chip color="accent" selected>Pressure - {{data.weatherData.main.pressure}} hpa</mat-chip>
+        <mat-chip color="accent" selected>Humidity - {{data.weatherData.main.humidity}} %</mat-chip>
+    </mat-chip-list>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Discard</button>
+</mat-dialog-actions>
