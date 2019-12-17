@@ -10,10 +10,11 @@
 <div class="content" role="main">
     <mat-card class="search-card">
         <mat-card-title>Search for Weather</mat-card-title>
-        <form class="search-form">
+        <form class="search-form" (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
             <mat-form-field>
-                <input matInput placeholder="Enter City Name" #locationSearchInput />
+                <input name="city" matInput placeholder="Enter City Name" #locationSearchInput required ngModel />
             </mat-form-field>
+            <input type="submit" style="visibility: hidden" />
         </form>
     </mat-card>
 

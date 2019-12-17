@@ -28,11 +28,17 @@ export class AppComponent {
       debounceTime(1000),
       distinctUntilChanged()
     ).subscribe((text: string) => {
-      this.searchService.search(text).subscribe(res => {
-        console.log('res', res);
-        this.filteredCityData = res;
-      })
+      this.loadFilteredCities(text);
     })
+  }
 
+  onSubmit(form) {
+    this.loadFilteredCities(form.value.city);
+  }
+
+  loadFilteredCities(city) {
+    this.searchService.search(city).subscribe(res => {
+      this.filteredCityData = res;
+    })
   }
 }
