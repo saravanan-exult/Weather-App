@@ -18,7 +18,7 @@ export class SearchService {
     .pipe(
       map((response) => JSON.parse(JSON.stringify(response))),
       concatMap(arr => from(arr)),
-      filter(item => item['name'].toLowerCase().includes(queryString)),
+      filter(item => item['name'].toLowerCase().includes(queryString.toLowerCase())),
       toArray()
     )
   }
